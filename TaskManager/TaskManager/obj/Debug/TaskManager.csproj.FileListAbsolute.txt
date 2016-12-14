@@ -32,3 +32,35 @@ C:\Users\Artsiom\Documents\Visual Studio 2015\Projects\TaskManager\TaskManager\o
 C:\Users\Artsiom\Documents\Visual Studio 2015\Projects\TaskManager\TaskManager\obj\Debug\TaskManager.pdb
 C:\Users\Artsiom\Documents\Visual Studio 2015\Projects\TaskManager\TaskManager\bin\DTO.dll
 C:\Users\Artsiom\Documents\Visual Studio 2015\Projects\TaskManager\TaskManager\bin\DTO.pdb
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\roslyn\csc.exe
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\roslyn\System.Collections.Immutable.dll
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\roslyn\System.Reflection.Metadata.dll
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\roslyn\vbc.exe
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\roslyn\VBCSCompiler.exe
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\roslyn\VBCSCompiler.exe.config
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\TaskManager.dll.config
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\TaskManager.dll
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\TaskManager.pdb
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\EntityFramework.dll
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\EntityFramework.SqlServer.dll
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\Newtonsoft.Json.dll
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\System.Net.Http.Formatting.dll
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\System.Web.Http.dll
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\System.Web.Http.WebHost.dll
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\EntityFramework.xml
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\EntityFramework.SqlServer.xml
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\Newtonsoft.Json.xml
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\System.Net.Http.Formatting.xml
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\System.Web.Http.xml
+D:\Epam\WebApi_training\TaskManager\TaskManager\bin\System.Web.Http.WebHost.xml
+D:\Epam\WebApi_training\TaskManager\TaskManager\obj\Debug\TaskManager.csprojResolveAssemblyReference.cache
+D:\Epam\WebApi_training\TaskManager\TaskManager\obj\Debug\TaskManager.dll
+D:\Epam\WebApi_training\TaskManager\TaskManager\obj\Debug\TaskManager.pdb

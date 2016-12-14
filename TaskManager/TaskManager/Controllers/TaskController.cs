@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web.Http;
 using TaskManager.Models;
 
@@ -10,45 +12,44 @@ namespace TaskManager.Controllers
 {
     public class TaskController : ApiController
     {
-        private readonly TaskManagerContext _context = new TaskManagerContext();
-
+        
         // GET api/tasks
         [HttpGet]
-        public IEnumerable<Task> Get()
-            => _context.Tasks;
+        public IEnumerable Get()
+        {
+            dynamic tasks = null;
+            HttpClient client = new HttpClient();
+             client.BaseAddress = new Uri("http://localhost:31484");
+             client.DefaultRequestHeaders.Accept.Clear();
+             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = client.GetAsync("/api/taskprovider").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                tasks = response.Content.ReadAsAsync<IEnumerable>().Result;
+            }
+            return tasks;
+
+        }
 
         // GET api/tasks/5
         [HttpGet]
-        public Task Get(int id)
-            => _context.Tasks.FirstOrDefault(t => t.Id == id);
+        public object Get(int id)
+        {
+            throw new NotImplementedException();
+        }
 
         // POST api/tasks
         [HttpPost]
-        public IHttpActionResult Post(Task task)
+        public IHttpActionResult Post(object task)
         {
-            if (ReferenceEquals(task, null))
-                return Ok(); // What I need to return in this situation???
-            task.CreateDate = DateTime.Now;
-            _context.Tasks.Add(task);
-            _context.SaveChanges();
-            return Ok();
-
-        }        
+            throw new NotImplementedException();
+        }
 
         // DELETE api/tasks/5
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
-            var task = _context.Tasks.FirstOrDefault(t => t.Id == id);
-
-            if (!ReferenceEquals(task, null))
-            {
-                _context.Tasks.Remove(task);
-                _context.SaveChanges();
-            }
-                
-
-            return Ok();
+            throw new NotImplementedException();
         }
     }
 }

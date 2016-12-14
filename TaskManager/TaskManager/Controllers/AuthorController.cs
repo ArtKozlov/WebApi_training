@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,9 +11,10 @@ namespace TaskManager.Controllers
 {
     public class AuthorController : ApiController
     {
-        private readonly TaskManagerContext _context = new TaskManagerContext();
         [HttpGet]
-        public IEnumerable<Author> Get()
-            => _context.Authors;
+        public IEnumerable Get()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
