@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using DAL.Context;
@@ -18,12 +19,20 @@ namespace DAL.Repositories
         }
         public void Create(Task task)
         {
-            if (!ReferenceEquals(task, null))
+            if (ReferenceEquals(task, null))
                 throw new ArgumentNullException();
 
             _context.Tasks.Add(task);
-            _context.SaveChanges();
-            _context.Dispose();
+            try
+            {
+                _context.SaveChanges();
+                _context.Dispose();
+            }
+            catch (Exception e)
+            {
+                
+            }
+
         }
 
         public void Delete(int key)
@@ -49,6 +58,16 @@ namespace DAL.Repositories
             var result = _context.Tasks.FirstOrDefault(t => t.Id == key);
          
             return result;
+        }
+
+        public void Update(Task task)
+        {
+            var entity = _context.Tasks.Find(task.Id);
+            entity.Name = task.Name;
+            entity.Description = task.Description;
+            entity.CreateDate = task.CreateDate;
+            entity.Author = task.Author;
+            _context.Entry(task).State = EntityState.Modified;
         }
     }
 }

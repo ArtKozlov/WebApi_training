@@ -7,61 +7,65 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
-<body ng-app ="toDoList" ng-controller ="taskCtrl">
-<form class="form-horizontal" id="addTask">
+<body ng-app="toDoList" ng-controller="taskCtrl">
     <fieldset>
-
-
         <legend>Task Manager</legend>
+        <form class="form-horizontal" id="addTask">
 
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="Task Name">Task Name</label>
-            <div class="col-md-5">
-                <input ng-model="name" id="Task Name" name="Task Name" type="text" placeholder="Name..." class="form-control input-md">
-                <span class="help-block">This is name your task.</span>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="Task Name">Task Name</label>
+                <div class="col-md-5">
+                    <input ng-model="name" id="Task Name" name="Task Name" type="text" placeholder="Name..." class="form-control input-md">
+                    <span class="help-block">This is name your task.</span>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label class="col-md-4 control-label">Task description</label>
-            <div class="col-md-5">
-                <input type='text' ng-model="description" class="form-control" id="textarea" name="textarea" placeholder="Description..."/>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Task description</label>
+                <div class="col-md-5">
+                    <input type='text' ng-model="description" class="form-control" id="textarea" name="textarea" placeholder="Description..." />
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label class="col-md-4 control-label">Select Author</label>
-            <div class="col-md-5">
-                <input  ng-model="author" list="browsers" name="browser" class="form-control">
-                <datalist  id="browsers" >
-                    <option ng-repeat="author in authors track by $index" value="{{author.name}}">{{author.name}}</option>
-                </datalist>
-</div>
-        </div>
-
-
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="submitTask"></label>
-            <div class="col-md-4">
-                <button ng-click="addTask()" id="submitTask" name="submitTask" class="btn btn-success">Finish</button>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Select Author</label>
+                <div class="col-md-5">
+                    <input ng-model="author" list="browsers" name="browser" class="form-control">
+                    <datalist id="browsers">
+                        <option ng-repeat="author in authors track by $index" value="{{author.name}}">{{author.name}}</option>
+                    </datalist>
+                </div>
             </div>
-        </div>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="submitTask"></label>
+                <div class="col-md-4">
+                    <button ng-click="addTask()" id="submitTask" name="submitTask" class="btn btn-success">Finish</button>
+                </div>
+            </div>
+
+</form>
+<div class="row content">
+    <div class="col-md-5">
         <h2>To do list:</h2>
         <div id="allItems" class="form-group">
             <div class="col-md-4" ng-repeat="task in tasks track by $index">
-                <div style=" padding: 10px;">
+                <div>
                     <p>Name: {{task.name}}</p>
                     <p>Description: {{task.description}}</p>
-                    <p>Author: {{task.author}}</p>
+                    <p>Author: {{task.authorName}}</p>
                     <p>Created date: {{task.createDate}}</p>
                 </div>
                 <button class="btn btn-danger" ng-click=removeTask($index,task)>DELETE</button>
             </div>
-            
-        </div>
-    </fieldset>
-</form>
 
+        </div>
+    </div>
+    </div>
+            </fieldset>
 
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
 <script src="Scripts/angular.js"></script>

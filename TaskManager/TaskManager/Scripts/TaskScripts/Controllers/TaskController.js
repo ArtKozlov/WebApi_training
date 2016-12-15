@@ -26,7 +26,7 @@ function ($scope, $http, taskService) {
                     id: element.Id,
                     name: element.Name,
                     description: element.Description,
-                    author: element.Author,
+                    authorName: element.Author,
                     createDate: element.CreateDate
                 });
             });
@@ -42,13 +42,13 @@ function ($scope, $http, taskService) {
     function init() {
         taskService.getAll().then(function (response) {
             $scope.tasks = [];
-
-            response.data.forEach(function(element) {
+            var dataFromResponse = JSON.parse(response.data);
+            dataFromResponse.forEach(function (element) {
                 $scope.tasks.push({
                     id: element.Id,
                     name: element.Name,
                     description: element.Description,
-                    author: element.Author,
+                    authorName: element.Author,
                     createDate: new Date(element.CreateDate).toISOString().slice(0, 16)
                 });
             });
@@ -58,8 +58,8 @@ function ($scope, $http, taskService) {
         taskService.getAllAuthors()
             .then(function(response) {
                 $scope.authors = [];
-
-                response.data.forEach(function(element) {
+                var dataFromResponse = JSON.parse(response.data);
+                dataFromResponse.forEach(function (element) {
                     $scope.authors.push({
                         name: element.Name
 

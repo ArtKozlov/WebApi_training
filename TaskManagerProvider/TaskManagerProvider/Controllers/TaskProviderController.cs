@@ -42,6 +42,16 @@ namespace TaskManagerProvider.Controllers
 
         }
 
+        [HttpPut]
+        public void Put(TaskDto tasktoDto)
+        {
+            if (!ReferenceEquals(tasktoDto, null))
+            {
+                _taskRepository.Update(tasktoDto.ToTask());
+            }
+
+        }
+
         // DELETE api/tasks/5
         [HttpDelete]
         public void Delete(int id)

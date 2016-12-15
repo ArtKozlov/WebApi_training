@@ -8,7 +8,7 @@
             return $http.get('/api/task/' + id);
         },
         post: function (data) {
-            return $http.post('/api/task', data);
+            return $http.post('/api/task/', data);
         },
         remove: function (id) {
             return $http.delete('/api/task/' + id);

@@ -12,5 +12,6 @@ namespace DAL.Interfaces
         TEntity GetById(int key);
         void Create(TEntity e);
         void Delete(int key);
+        void Update(TEntity e);
     }
 }

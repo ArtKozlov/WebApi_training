@@ -20,7 +20,7 @@ namespace TaskManagerProvider.Mapping
                 Name = taskEntity.Name,
                 Description = taskEntity.Description,
                 CreateDate = taskEntity.CreateDate,
-                Author = taskEntity.Author.ToAuthorDto()
+                Author = taskEntity.Author.Name
             };
         }
 
@@ -34,7 +34,10 @@ namespace TaskManagerProvider.Mapping
                 Name = taskDtoEntity.Name,
                 Description = taskDtoEntity.Description,
                 CreateDate = taskDtoEntity.CreateDate,
-                Author = taskDtoEntity.Author.ToAuthor()
+                Author = new Author()
+                {
+                    Name = taskDtoEntity.Author
+                } 
             };
         }
 

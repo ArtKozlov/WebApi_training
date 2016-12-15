@@ -54,5 +54,9 @@ namespace DAL.Repositories
             return result;
         }
 
+        public void Update(Author e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
