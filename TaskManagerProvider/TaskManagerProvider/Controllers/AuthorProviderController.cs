@@ -22,7 +22,7 @@ namespace TaskManagerProvider.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<AuthorDto> Get()
-            => _authorRepository.GetAll().Select(a =>a.ToAuthorDto());
+        public IHttpActionResult Get()
+            => Ok(_authorRepository.GetAll().Select(a =>a.ToAuthorDto()));
     }
 }

@@ -15,8 +15,26 @@ function ($scope, $http, taskService) {
         $scope.tasks.push($scope.newTask);
         taskService.post($scope.newTask);
         $scope.tasks.reverse().show();
+        $scope.name = '';
+        $scope.description = '';
+        $scope.author = '';
     }
-
+    $scope.updateTask = function (index) {
+        $scope.newTask = {
+            id: $scope.tasks[index].id,
+            name: $scope.name,
+            description: $scope.description,
+            author: $scope.author
+        }
+        $scope.tasks[index].name = $scope.name;
+        $scope.tasks[index].description = $scope.description;
+        $scope.tasks[index].authorName = $scope.author;
+        taskService.put($scope.newTask);
+        $scope.tasks.show();
+        $scope.name = '';
+        $scope.description = '';
+        $scope.author = '';
+    }
     $scope.getTaskById = function (index, elem) {
         taskService.getById(elem.id).then(function (response) {
             $scope.tasks = [];

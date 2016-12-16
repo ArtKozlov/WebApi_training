@@ -23,15 +23,9 @@ namespace DAL.Repositories
                 throw new ArgumentNullException();
 
             _context.Tasks.Add(task);
-            try
-            {
-                _context.SaveChanges();
-                _context.Dispose();
-            }
-            catch (Exception e)
-            {
-                
-            }
+            _context.SaveChanges();
+            _context.Dispose();
+            
 
         }
 
@@ -65,9 +59,15 @@ namespace DAL.Repositories
             var entity = _context.Tasks.Find(task.Id);
             entity.Name = task.Name;
             entity.Description = task.Description;
-            entity.CreateDate = task.CreateDate;
-            entity.Author = task.Author;
-            _context.Entry(task).State = EntityState.Modified;
+            entity.CreateDate = DateTime.Now;
+            var author = _context.Authors.FirstOrDefault(a => a.Name == task.Author.Name);
+            if (!ReferenceEquals(author, null))
+                entity.Author = author;
+            else
+                entity.Author = task.Author;
+            _context.Entry(entity).State = EntityState.Modified;
+            _context.SaveChanges();
+            _context.Dispose();
         }
     }
 }

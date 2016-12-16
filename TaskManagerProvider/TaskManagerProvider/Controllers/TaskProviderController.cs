@@ -22,39 +22,46 @@ namespace TaskManagerProvider.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<TaskDto> Get()
-            => _taskRepository.GetAll().Select(t => t.ToTaskDto());
+        public IHttpActionResult Get()
+            => Ok(_taskRepository.GetAll().Select(t => t.ToTaskDto()));
 
-        // GET api/tasks/5
+        
         [HttpGet]
-        public TaskDto Get(int id)
-            => _taskRepository.GetById(id).ToTaskDto();
+        public IHttpActionResult Get(int id)
+            => Ok(_taskRepository.GetById(id).ToTaskDto());
 
-        // POST api/tasks
+        
         [HttpPost]
-        public void Post(TaskDto task)
+        public IHttpActionResult Post(TaskDto task)
         {
-            if (!ReferenceEquals(task, null))
-            { 
-                task.CreateDate = DateTime.Now;
-                _taskRepository.Create(task.ToTask());
+            if (ModelState.IsValid)
+            {
+                if (!ReferenceEquals(task, null))
+                {
+                    task.CreateDate = DateTime.Now;
+                    _taskRepository.Create(task.ToTask());
+                }
             }
+            return Ok();
 
         }
 
         [HttpPut]
-        public void Put(TaskDto tasktoDto)
+        public IHttpActionResult Put(TaskDto tasktoDto)
         {
-            if (!ReferenceEquals(tasktoDto, null))
-            {
-                _taskRepository.Update(tasktoDto.ToTask());
+            if(ModelState.IsValid)
+            { 
+                if (!ReferenceEquals(tasktoDto, null))
+                {
+                    _taskRepository.Update(tasktoDto.ToTask());
+                }
             }
-
+            return Ok();
         }
 
-        // DELETE api/tasks/5
+        
         [HttpDelete]
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
             var task = _taskRepository.GetById(id);
 
@@ -62,7 +69,7 @@ namespace TaskManagerProvider.Controllers
             {
                 _taskRepository.Delete(id);
             }
-            
+            return Ok();
         }
     }
 }

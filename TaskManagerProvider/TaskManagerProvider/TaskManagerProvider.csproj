@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Attributes\CustomStringLengthAttribute.cs" />
     <Compile Include="Controllers\AuthorProviderController.cs" />
     <Compile Include="Controllers\TaskProviderController.cs" />
     <Compile Include="Global.asax.cs">

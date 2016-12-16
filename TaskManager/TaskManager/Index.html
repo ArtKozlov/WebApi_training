@@ -8,69 +8,75 @@
 
 </head>
 <body ng-app="toDoList" ng-controller="taskCtrl">
-    <fieldset>
-        <legend>Task Manager</legend>
-        <form class="form-horizontal" id="addTask">
+
+<legend>To do list</legend>
+            <div class="row content">
+
+                        <div class="col-md-5">
+
+                            <div id="allItems" class="form-group">
+                                <div class="col-md-6" ng-repeat="task in tasks track by $index">
+                                    <div>
+                                        <p>Name: {{task.name}}</p>
+                                        <p>Description: {{task.description}}</p>
+                                        <p>Author: {{task.authorName}}</p>
+                                        <p>Created date: {{task.createDate}}</p>
+                                    </div>
+                                    <button class="btn btn-info" ng-click=updateTask($index)>UPDATE</button>
+                                    <button class="btn btn-danger" ng-click=removeTask($index,task)>DELETE</button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-7 ">
+                            <div class="container col-md-10" style="position: fixed">
+                                <div class="form-horizontal col-md-9">
+                                    <div class="form-group" >
+                                        <label class="col-md-4 control-label" for="taskName">Task Name</label>
+                                        <div class="col-md-5" ng-form="nameForm">
+                                            <input ng-model="name" id="taskName" name="name" type="text" placeholder="Name..." class="form-control input-md" ng-maxlength="40" ng-minLength="4" required>
+                                            <span class="error" ng-show="nameForm.name.$error.maxlength" style="color: red">Too long! Name field needs to be less than 40 characters.</span>
+                                            <span class="error" ng-show="nameForm.name.$error.minlength || nameForm.name.$touched && nameForm.name.$invalid" style="color: red">Too small! Name field needs to be more than 4 characters.</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Task description</label>
+                                        <div class="col-md-5" ng-form="descriptionForm">
+                                            <input type='text' ng-model="description" class="form-control" id="textarea" name="description" placeholder="Description..." ng-maxlength="80" ng-minLength="6" required>
+                                            <span class="error" ng-show="descriptionForm.description.$error.maxlength" style="color: red">Too long! Description field needs to be less than 80 characters.</span>
+                                            <span class="error" ng-show="descriptionForm.description.$error.minlength || descriptionForm.description.$touched && descriptionForm.description.$invalid" style="color: red">Too small! Description field needs to be more than 6 characters.</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Select Author</label>
+                                        <div class="col-md-5" ng-form="authorForm">
+                                            <input ng-model="author" list="browsers" name="author" class="form-control" ng-maxlength="40" ng-minLength="4" required>
+                                            <span class="error" ng-show="authorForm.author.$error.maxlength" style="color: red">Too long! Author field needs to be less than 40 characters.</span>
+                                            <span class="error" ng-show="authorForm.author.$error.minlength || authorForm.author.$touched && authorForm.author.$invalid" style="color: red">Too small! Author field needs to be more than 4 characters.</span>
+                                            <datalist id="author">
+                                                <option ng-repeat="author in authors track by $index" value="{{author.name}}">{{author.name}}</option>
+                                            </datalist>
+                                        </div>
+                                    </div>
 
 
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="submitTask"></label>
+                                        <div class="col-md-4">
+                                            <button ng-disabled="authorForm.$invalid || descriptionForm.$invalid || nameForm.$invalid" ng-click="addTask()" id="submitTask" name="submitTask" class="btn btn-success" >ADD</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="Task Name">Task Name</label>
-                <div class="col-md-5">
-                    <input ng-model="name" id="Task Name" name="Task Name" type="text" placeholder="Name..." class="form-control input-md">
-                    <span class="help-block">This is name your task.</span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-4 control-label">Task description</label>
-                <div class="col-md-5">
-                    <input type='text' ng-model="description" class="form-control" id="textarea" name="textarea" placeholder="Description..." />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-4 control-label">Select Author</label>
-                <div class="col-md-5">
-                    <input ng-model="author" list="browsers" name="browser" class="form-control">
-                    <datalist id="browsers">
-                        <option ng-repeat="author in authors track by $index" value="{{author.name}}">{{author.name}}</option>
-                    </datalist>
-                </div>
-            </div>
-
-
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="submitTask"></label>
-                <div class="col-md-4">
-                    <button ng-click="addTask()" id="submitTask" name="submitTask" class="btn btn-success">Finish</button>
-                </div>
-            </div>
-
-</form>
-<div class="row content">
-    <div class="col-md-5">
-        <h2>To do list:</h2>
-        <div id="allItems" class="form-group">
-            <div class="col-md-4" ng-repeat="task in tasks track by $index">
-                <div>
-                    <p>Name: {{task.name}}</p>
-                    <p>Description: {{task.description}}</p>
-                    <p>Author: {{task.authorName}}</p>
-                    <p>Created date: {{task.createDate}}</p>
-                </div>
-                <button class="btn btn-danger" ng-click=removeTask($index,task)>DELETE</button>
-            </div>
-
-        </div>
-    </div>
-    </div>
-            </fieldset>
-
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
-<script src="Scripts/angular.js"></script>
-<script src="Scripts/angular.js"></script>
-<script src="Scripts/TaskScripts/Controllers/taskController.js"></script>
-    <script src="Scripts/TaskScripts/Services/taskService.js"></script>
+                <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+                <script src="Scripts/angular.js"></script>
+                <script src="Scripts/angular.js"></script>
+                <script src="Scripts/TaskScripts/Controllers/taskController.js"></script>
+                <script src="Scripts/TaskScripts/Services/taskService.js"></script>
 </body>
 </html>

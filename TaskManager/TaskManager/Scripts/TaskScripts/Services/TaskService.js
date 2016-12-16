@@ -15,6 +15,9 @@
         },
         getAllAuthors: function () {
             return $http.get('/api/author');
+        },
+        put: function (data) {
+            return $http.put('/api/task/', data);
         }
     }
 }]);

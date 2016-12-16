@@ -60,7 +60,7 @@ namespace TaskManager.Controllers
         }
 
         [HttpPut]
-        public IHttpActionResult Put(object task)
+        public IHttpActionResult Put([FromBody]object task)
         {
             _response = _client.PutAsJsonAsync("/api/taskprovider", task).Result;
             if (_response.IsSuccessStatusCode)
